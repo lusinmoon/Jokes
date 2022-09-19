@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0 ;
+    box-sizing: border-box;
+}
+
+span{
+    color: blue;
+    font-size: 15px;
+}
+
+.category {
+    margin-left: 30px;
+    width: 500px;
+    height: 100px;
+    border: 2px solid black;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: center;
+}
+
+p{
+    font-weight: bold;
+    color:crimson;
+    font-size: 20px;
+}
+
+.c{
+    display: flex;
+    gap:15px;
+
+}
+
+
+
+button{
+    border: 2px solid rgba(196, 196, 196, 0.541) ;
+    background-color:rgba(196, 196, 196, 0.541);
+    color:blue;
+    font-size: 15px;
+    width: 100px;
+}
+
