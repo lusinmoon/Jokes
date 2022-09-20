@@ -1,57 +1,61 @@
-import {useState, useRef, createRef} from "react"
-import Apps from "./App.css"
+import {useState} from 'react'
+import './style.scss'
 
-
-const App=()=> {
-
-  const [input,setInput]=useState([])
-  const inputRef = createRef()
-  
-  const  setJokes = (e)=>{
-    input.push(e.target.value)
-    console.log(input)
-
-  }
-
-  const click=(e)=>{
-    console.log(inputRef)
-  }
+const App = () => {
+  const [data,setData]=useState("")
+  const ops = ["/","*","+","-","%"]
 
   
-//  fetch("https://v2.jokeapi.dev/joke/" + "Custom" 
 
+  function click(e){
+
+    if( ops.includes(e.target.innerText) && data === "" ||
+    ops.includes(e.target.innerText) &&  ops.includes(data.slice(-1))){
+      return;
+    }
+    switch(e.target.innerText){
+      case 'Clear': setData("")
+      break;
+      case "=" : setData(eval(data))
+      break;
+
+
+      
+      
+
+      default:  
+            setData(data + e.target.innerText)
+
+    }
+    console.log(data)
+
+  }
 
 
   return (
-    <div className="App">
-      <div className="category">
-      <p>Select category / categories:</p>
-           <span>Any   <input ref={inputRef} name={"category"} value="Any" onClick={setJokes} type={"radio"}></input></span>
-          <div className="c">
-               <span>Custom: <input value="Custom" onClick={setJokes} name={"category"} type={"radio"}></input>   </span>
-               <span>Programming</span><input value="Programming" onClick={setJokes} type={"checkbox"}></input>
-               <span>Spooky</span><input value="Spooky" onClick={setJokes} type={"checkbox"}></input>
-               <span>Christmas</span><input value="Christmas" onClick={setJokes} type={"checkbox"}></input>
-           </div>
-           </div>
-           
-      <div className="category">
-
-              <p>Select flags to blacklist:</p>
-          <div className="c">
-               <span>nsfw</span><input value="nsfw" onClick={setJokes} type={"checkbox"}></input>
-               <span>political</span><input onClick={setJokes} value="political" type={"checkbox"}></input>
-               
-      </div>
-       </div>
-       <div className="category">
-       <p>Amount of jokes:</p>
-       <input type={"number"}  max={"10"}></input>
-
-          <button onClick={click}>CLICK ME</button>
-       </div>
+    <div className='container'>
+    <div className='window'>{data}</div>
+    <div onClick={click} className='number' >
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>+</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>-</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>0</button>
+      <button>/</button>
+      <button>*</button>
+      <button>=</button>
+      <button>%</button>
+      <button>Clear</button>
     </div>
-  );
-}
+    </div>
+  )}
 
-export default App;
+
+export default App
